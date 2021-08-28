@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './css/clean-blog.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 if (App) {
     ReactDOM.render(
-        //<React.StrictMode>
-           <App/>,
-        //</React.StrictMode>,
+        <React.StrictMode>
+           <App/>
+        </React.StrictMode>,
         document.getElementById('root')
     );
 }
