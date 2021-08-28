@@ -4,9 +4,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 if (App) {
+    const header = {
+        imgPath: {backgroundImage: "url('img/home-bg.jpg')"},
+        headingType: "site-heading",
+        headingTitle: "The Fishy Blog",
+        subheading: "So Fishy Fishy"
+    };
     ReactDOM.render(
         <React.StrictMode>
-           <App/>
+           <App
+               header={header}
+           />
         </React.StrictMode>,
         document.getElementById('root')
     );

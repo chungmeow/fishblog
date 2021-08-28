@@ -1,15 +1,16 @@
 import React from 'react';
 
-export default function Header() {
+export default function Header(props) {
+    const header = props.header;
     return (
-        <header className="masthead" style={{backgroundImage: "url('img/home-bg.jpg')"}}>
+        <header className="masthead" style={header.imgPath}>
             <div className="overlay"/>
             <div className="container">
                 <div className="row">
                     <div className="col-lg-8 col-md-10 mx-auto">
-                        <div className="site-heading">
-                            <h1>The Fishy Blog</h1>
-                            <span className="subheading">So Fishy Fishy</span>
+                        <div className={header.headingType}>
+                            <h1>{header.headingTitle}</h1>
+                            <span className="subheading">{header.subheading}</span>
                         </div>
                     </div>
                 </div>
