@@ -1,20 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter} from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 if (App) {
-    const header = {
-        imgPath: {backgroundImage: "url('img/home-bg.jpg')"},
-        headingType: "site-heading",
-        headingTitle: "The Fishy Blog",
-        subheading: "So Fishy Fishy"
-    };
     ReactDOM.render(
         <React.StrictMode>
-           <App
-               header={header}
-           />
+            <BrowserRouter>
+               <App/>
+            </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root')
     );

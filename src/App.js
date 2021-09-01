@@ -1,7 +1,7 @@
 import React from 'react';
+import {Route, Switch, Redirect} from 'react-router-dom';
 import Navbar from './Navbar';
-import Header from './Header';
-import Posts from './Posts';
+import Home from './Home';
 import Post from './Post';
 
 class App extends React.Component {
@@ -9,11 +9,11 @@ class App extends React.Component {
         return (
             <>
                 <Navbar/>
-                <Header header={this.props.header}/>
-                <Posts>
-                    <Post/>
-                    <hr/>
-                </Posts>
+                <Switch>
+                    <Route path="/" exact component={Home}/>
+                    <Route path="/home" render={() => <Redirect to="/"/>}/>
+                    <Route path="/post" component={Post}/>
+                </Switch>
             </>
         );
     }

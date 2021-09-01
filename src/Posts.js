@@ -1,5 +1,5 @@
 import React from 'react';
-import Post from './Post'
+import Postitem from './Postitem'
 
 class Posts extends React.Component {
     render() {
@@ -7,7 +7,8 @@ class Posts extends React.Component {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-8 col-md-10 mx-auto">
-                        <Post/>
+                        <Postitem/>
+                        <hr/>
                     </div>
                 </div>
             </div>
