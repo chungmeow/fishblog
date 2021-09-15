@@ -1,6 +1,10 @@
 const Service = require('./Service');
 const User = require('../models/UserModel');
 
-const UserService = Service(User, 'User');
+class UserService extends Service {
+    constructor() {
+        super(User, 'User');
+    }
+}
 
 module.exports = UserService;

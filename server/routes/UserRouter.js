@@ -2,10 +2,9 @@ const express = require('express');
 const UserService = require('../services/UserService');
 
 const router = express.Router();
+const userService = new UserService();
 
-router.post('/users', UserService.create);
-router.put('/users/:id', UserService.update);
-router.get('/users/:id', UserService.fetch);
-//router.delete('/users/:id', UserService.delete);
+router.post('/users', userService.create);
+router.get('/users/:id', userService.fetch);
 
 module.exports = router;
