@@ -3,7 +3,7 @@ class Service {
         this.Model = Model;
         this.modelType = modelType;
     };
-    create = (req, res) => {
+    create = async (req, res) => {
         if (!req.body) {
             return res.status(400).json({
                 success: false,
@@ -14,33 +14,42 @@ class Service {
         if (!model) {
             return res.status(400).json({
                 success: false,
-                error: 'Model instantiation error'
+                error: 'Model creation error'
             });
         }
-        model.save().then(() => {
+        await model.save().then((model, error) => {
+            if (!!error) {
+                return res.status(400).json({
+                    error,
+                    message: `${this.modelType} not created`
+                });
+            }
             return res.status(201).json({
                 success: true,
                 id: model._id,
                 message: `${this.modelType} created`
             });
-        })
-        .catch(error => {
-            return res.status(400).json({
-                error,
-                message: `${this.modelType} not created`
-            });
         });
     };
     fetch = async (req, res) => {
-        await this.Model.findOne({_id: req.params.id}, (error, model) => {
+        await this.Model.findOne({_id: req.params.id}).then((model, error) => {
             if (!!error) {
-                return res.status(400).json({success: false, error: error});
+                return res.status(400).json({
+                    success: false,
+                    error: error
+                });
             }
             if (!model) {
-                return res.status(404).json({success: false, error: `${this.modelType} not found`});
+                return res.status(404).json({
+                    success: false,
+                    error: `${this.modelType} not found`
+                });
             }
-            return res.status(200).json({success: true, data: model});
-        }).catch(error => console.log(error));
+            return res.status(200).json({
+                success: true,
+                data: model
+            });
+        });
     };
 }
 
