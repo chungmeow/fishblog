@@ -18,3 +18,4 @@ export default function Header(props) {
         </header>
     );
 }
+//TODO: may want to change this into a react component

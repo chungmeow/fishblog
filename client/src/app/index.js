@@ -1,20 +1,21 @@
 import React from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom';
-import Navbar from '../components/Navbar';
+import NavBar from '../components/NavBar';
 import Home from '../pages/Home';
 import Post from '../pages/Post';
 import Login from '../pages/Login';
+import '../vendor/bootstrap/css/bootstrap.min.css';
 
 class App extends React.Component {
     render() {
         return (
             <>
-                <Navbar/>
+                <NavBar/>
                 <Switch>
-                    <Route path="/" exact component={Home}/>
-                    <Route path="/home" exact render={() => <Redirect to="/"/>}/>
-                    <Route path="/post" exact component={Post}/>
-                    <Route path="/login" exact component={Login}/>
+                    <Route exact path="/" component={Home}/>
+                    <Route exact path="/home" render={() => <Redirect to="/"/>}/>
+                    <Route exact path="/post" component={Post}/>
+                    <Route exact path="/login" component={Login}/>
                 </Switch>
             </>
         );

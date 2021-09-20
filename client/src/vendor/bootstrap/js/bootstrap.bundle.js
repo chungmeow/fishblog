@@ -4283,7 +4283,7 @@
 
       if (showEvent.isDefaultPrevented()) {
         return;
-      } // Disable totally Popper.js for Dropdown in Navbar
+      } // Disable totally Popper.js for Dropdown in NavBar
 
 
       if (!this._inNavbar && usePopper) {

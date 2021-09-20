@@ -1,24 +1,28 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
-import Navitem from './Navitem';
-import getNavitem from './getNavitem'
+import NavItem from './NavItem';
+import getNavItems from './getNavItems'
 import '../css/clean-blog.css'; //TODO: sort out css delivery
 
-class Navbar extends Component {
-    renderItem(i) {
-        const navItem = getNavitem(i);
+class NavBar extends Component {
+    renderItem(navItem) {
         return (
-            <Navitem
-                key={i}
+            <NavItem
+                key={navItem.i}
                 path={navItem.path}
                 name={navItem.name}
             />
         );
     }
     render() {
-        const items = Array(5).fill(null);
+        const navItems = getNavItems();
+        const items = Array(navItems.length).fill(null);
         for (let i=0; i<items.length; i++) {
-            items[i] = this.renderItem(i)
+            items[i] = this.renderItem({
+                i: i,
+                path: navItems[i].path,
+                name: navItems[i].name
+            });
         }
         return (
             <div className="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -41,4 +45,4 @@ class Navbar extends Component {
     }
 }
 
-export default Navbar;
+export default NavBar;
