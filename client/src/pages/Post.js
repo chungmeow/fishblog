@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from './Header';
-import getHeader from './getHeader';
+import Header from '../components/Header';
+import getHeader from '../components/getHeader';
 
 class Post extends React.Component {
     render() {

@@ -2,8 +2,8 @@ import React from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Home from '../pages/Home';
-import Post from '../components/Post';
-import Login from '../components/Login';
+import Post from '../pages/Post';
+import Login from '../pages/Login';
 
 class App extends React.Component {
     render() {
