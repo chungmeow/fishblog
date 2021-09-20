@@ -3,6 +3,7 @@ import {Route, Switch, Redirect} from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Home from '../pages/Home';
 import Post from '../components/Post';
+import Login from '../components/Login';
 
 class App extends React.Component {
     render() {
@@ -13,6 +14,7 @@ class App extends React.Component {
                     <Route path="/" exact component={Home}/>
                     <Route path="/home" exact render={() => <Redirect to="/"/>}/>
                     <Route path="/post" exact component={Post}/>
+                    <Route path="/login" exact component={Login}/>
                 </Switch>
             </>
         );
