@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import NavItem from './NavItem';
 import getNavItems from './getNavItems'
-import '../css/clean-blog.css'; //TODO: sort out css delivery
+import '../css/clean-blog.min.css'; //TODO: sort out css delivery
 
 class NavBar extends Component {
     renderItem(navItem) {
