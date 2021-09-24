@@ -1,10 +1,24 @@
 import React, {Component} from 'react';
-import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import NavItem from './NavItem';
 import getNavItems from './getNavItems'
 import '../css/clean-blog.min.css'; //TODO: sort out css delivery
 
 class NavBar extends Component {
+    constructor(props) {
+        super(props);
+        this.divRef = React.createRef();
+        this.state = {
+            scrollPos: 0,
+            styles: ['navbar', 'navbar-expand-lg', 'navbar-light', 'fixed-top']
+        };
+    }
+    componentDidMount() {
+        window.addEventListener('scroll', ()=> {this.handleScroll()});
+    }
+    componentWillUnmount() {
+        window.removeEventListener('scroll', ()=> {this.handleScroll()});
+    }
     renderItem(navItem) {
         return (
             <NavItem
@@ -13,6 +27,27 @@ class NavBar extends Component {
                 name={navItem.name}
             />
         );
+    }
+    handleScroll() {
+        const newScrollPos = window.pageYOffset;
+        const prevScrollPos = this.state.scrollPos;
+        const styles = this.state.styles;
+        const height = this.divRef.current.clientHeight;
+        if (newScrollPos < prevScrollPos) { //scroll up
+            if (newScrollPos > 0 && styles.includes('is-fixed')) {
+                !styles.includes('is-visible') && styles.push('is-visible');
+            } else {
+                styles.includes('is-fixed') && styles.splice(styles.indexOf('is-fixed'), 1);
+                styles.includes('is-visible') && styles.splice(styles.indexOf('is-visible'), 1);
+            }
+        } else if (newScrollPos > prevScrollPos) { //scroll down
+            styles.includes('is-visible') && styles.splice(styles.indexOf('is-visible'), 1);
+            newScrollPos > height && !styles.includes('is-fixed') && styles.push('is-fixed');
+        }
+        this.setState({
+            styles: styles,
+            scrollPos: newScrollPos
+        });
     }
     render() {
         const navItems = getNavItems();
@@ -25,9 +60,9 @@ class NavBar extends Component {
             });
         }
         return (
-            <div className="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <div ref={this.divRef} className={this.state.styles.join(" ")} id="mainNav">
                 <div className="container">
-                    <NavLink activeClassName="navbar-brand" to="/">Start Bootstrap</NavLink>
+                    <Link className="navbar-brand" to="/">Start Bootstrap</Link>
                     <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                             aria-label="Toggle navigation">
