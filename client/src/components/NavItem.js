@@ -1,10 +1,10 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import Nav from 'react-bootstrap/Nav';
 
 export default function NavItem(props) {
     return (
-        <li className="nav-item">
-            <NavLink exact className="nav-link" to={props.path}>{props.name}</NavLink>
-        </li>
+        <Nav.Item as="li">
+            <Nav.Link href={props.path}>{props.name}</Nav.Link>
+        </Nav.Item>
     );
 }

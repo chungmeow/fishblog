@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Navbar, ListGroup, Container} from 'react-bootstrap';
+import {Navbar, Container, Nav} from 'react-bootstrap';
 import NavItem from './NavItem';
 import getNavItems from './getNavItems'
 
@@ -70,9 +70,9 @@ class NavBar extends Component {
                         <i className="fas fa-bars"/>
                     </Navbar.Toggle>
                     <Navbar.Collapse id="navbarResponsive">
-                        <ListGroup as="ul" className="navbar-nav ml-auto">
+                        <Nav as="ul" className="ml-auto">
                             {items}
-                        </ListGroup>
+                        </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
