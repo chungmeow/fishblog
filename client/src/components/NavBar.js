@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Navbar, ListGroup, Container} from 'react-bootstrap';
 import NavItem from './NavItem';
 import getNavItems from './getNavItems'
-import '../css/clean-blog.min.css'; //TODO: sort out css delivery
 
 class NavBar extends Component {
     constructor(props) {
@@ -10,7 +9,7 @@ class NavBar extends Component {
         this.divRef = React.createRef();
         this.state = {
             scrollPos: 0,
-            styles: ['navbar', 'navbar-expand-lg', 'navbar-light', 'fixed-top']
+            styles: []
         };
     }
     componentDidMount() {
@@ -29,25 +28,28 @@ class NavBar extends Component {
         );
     }
     handleScroll() {
-        const newScrollPos = window.pageYOffset;
-        const prevScrollPos = this.state.scrollPos;
-        const styles = this.state.styles;
-        const height = this.divRef.current.clientHeight;
-        if (newScrollPos < prevScrollPos) { //scroll up
-            if (newScrollPos > 0 && styles.includes('is-fixed')) {
-                !styles.includes('is-visible') && styles.push('is-visible');
-            } else {
-                styles.includes('is-fixed') && styles.splice(styles.indexOf('is-fixed'), 1);
+        const MQL = 992;
+        if (window.document.documentElement.clientWidth > MQL) {
+            const newScrollPos = window.pageYOffset;
+            const prevScrollPos = this.state.scrollPos;
+            const styles = this.state.styles;
+            const height = this.divRef.current.clientHeight;
+            if (newScrollPos < prevScrollPos) { //scroll up
+                if (newScrollPos > 0 && styles.includes('is-fixed')) {
+                    !styles.includes('is-visible') && styles.push('is-visible');
+                } else {
+                    styles.includes('is-fixed') && styles.splice(styles.indexOf('is-fixed'), 1);
+                    styles.includes('is-visible') && styles.splice(styles.indexOf('is-visible'), 1);
+                }
+            } else if (newScrollPos > prevScrollPos) { //scroll down
                 styles.includes('is-visible') && styles.splice(styles.indexOf('is-visible'), 1);
+                newScrollPos > height && !styles.includes('is-fixed') && styles.push('is-fixed');
             }
-        } else if (newScrollPos > prevScrollPos) { //scroll down
-            styles.includes('is-visible') && styles.splice(styles.indexOf('is-visible'), 1);
-            newScrollPos > height && !styles.includes('is-fixed') && styles.push('is-fixed');
+            this.setState({
+                styles: styles,
+                scrollPos: newScrollPos
+            });
         }
-        this.setState({
-            styles: styles,
-            scrollPos: newScrollPos
-        });
     }
     render() {
         const navItems = getNavItems();
@@ -60,22 +62,20 @@ class NavBar extends Component {
             });
         }
         return (
-            <div ref={this.divRef} className={this.state.styles.join(" ")} id="mainNav">
-                <div className="container">
-                    <Link className="navbar-brand" to="/">Start Bootstrap</Link>
-                    <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                            aria-label="Toggle navigation">
+            <Navbar ref={this.divRef} className={this.state.styles.join(" ")} id="mainNav" expand="lg" fixed="top">
+                <Container>
+                    <Navbar.Brand href="/">Start Bootstrap</Navbar.Brand>
+                    <Navbar.Toggle className="navbar-toggler-right"  data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false">
                         Menu
                         <i className="fas fa-bars"/>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarResponsive">
-                        <ul className="navbar-nav ml-auto">
+                    </Navbar.Toggle>
+                    <Navbar.Collapse id="navbarResponsive">
+                        <ListGroup as="ul" className="navbar-nav ml-auto">
                             {items}
-                        </ul>
-                    </div>
-                </div>
-            </div>
+                        </ListGroup>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
         );
     }
 }

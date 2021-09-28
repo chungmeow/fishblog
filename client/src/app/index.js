@@ -5,6 +5,8 @@ import Home from '../pages/Home';
 import Post from '../pages/Post';
 import Login from '../pages/Login';
 import '../vendor/bootstrap/css/bootstrap.min.css';
+import '../vendor/fontawesome-free/css/all.min.css';
+import '../scss/clean-blog.scss';
 
 class App extends React.Component {
     render() {

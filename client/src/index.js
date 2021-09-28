@@ -11,7 +11,7 @@ if (App) {
                <App/>
             </Router>
         </React.StrictMode>,
-        document.getElementById('root')
+        document.body
     );
 }
 
