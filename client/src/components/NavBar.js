@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, {createRef, Component} from 'react';
+import {Link} from 'react-router-dom';
 import {Navbar, Container, Nav} from 'react-bootstrap';
 import NavItem from './NavItem';
 import getNavItems from './getNavItems'
@@ -6,7 +7,7 @@ import getNavItems from './getNavItems'
 class NavBar extends Component {
     constructor(props) {
         super(props);
-        this.divRef = React.createRef();
+        this.divRef = createRef();
         this.state = {
             scrollPos: 0,
             styles: []
@@ -66,7 +67,7 @@ class NavBar extends Component {
         return (
             <Navbar collapseOnSelect fluid="true" ref={this.divRef} className={this.state.styles.join(" ")} id="mainNav" expand="lg" fixed="top">
                 <Container>
-                    <Navbar.Brand href="/">Start Bootstrap</Navbar.Brand>
+                    <Navbar.Brand as={Link} to="/">Start Bootstrap</Navbar.Brand>
                     <Navbar.Toggle  aria-controls="navbarResponsive">
                         Menu
                         <i className="fas fa-bars"/>
