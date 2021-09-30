@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-export default function Postitem() {
+export default function PostItem() {
     return (
         <div className="post-preview">
             <Link to="/post">
