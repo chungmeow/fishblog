@@ -21,9 +21,10 @@ class NavBar extends Component {
     renderItem(navItem) {
         return (
             <NavItem
-                key={navItem.i}
+                key={navItem.key}
                 path={navItem.path}
                 name={navItem.name}
+                eventKey={navItem.eventKey}
             />
         );
     }
@@ -56,16 +57,17 @@ class NavBar extends Component {
         const items = Array(navItems.length).fill(null);
         for (let i=0; i<items.length; i++) {
             items[i] = this.renderItem({
-                i: i,
+                key: i,
                 path: navItems[i].path,
-                name: navItems[i].name
+                name: navItems[i].name,
+                eventKey: navItems[i].eventKey
             });
         }
         return (
-            <Navbar ref={this.divRef} className={this.state.styles.join(" ")} id="mainNav" expand="lg" fixed="top">
+            <Navbar collapseOnSelect fluid="true" ref={this.divRef} className={this.state.styles.join(" ")} id="mainNav" expand="lg" fixed="top">
                 <Container>
                     <Navbar.Brand href="/">Start Bootstrap</Navbar.Brand>
-                    <Navbar.Toggle className="navbar-toggler-right"  data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false">
+                    <Navbar.Toggle  aria-controls="navbarResponsive">
                         Menu
                         <i className="fas fa-bars"/>
                     </Navbar.Toggle>
