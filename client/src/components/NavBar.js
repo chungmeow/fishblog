@@ -65,7 +65,7 @@ class NavBar extends Component {
             });
         }
         return (
-            <Navbar collapseOnSelect fluid="true" ref={this.divRef} className={this.state.styles.join(" ")} id="mainNav" expand="lg" fixed="top">
+            <Navbar collapseOnSelect ref={this.divRef} className={this.state.styles.join(" ")} id="mainNav" expand="lg" fixed="top">
                 <Container>
                     <Navbar.Brand as={Link} to="/">Start Bootstrap</Navbar.Brand>
                     <Navbar.Toggle  aria-controls="navbarResponsive">
