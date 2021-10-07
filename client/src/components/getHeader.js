@@ -21,8 +21,7 @@ export default function getHeader(i) {
         '/post': {
             imgPath: {backgroundImage: "url('img/post-bg.jpg')"},
             headingType: "post-heading",
-            headingTitle: "post title",
-            subheading: "post body"
+            headingTitle: "Create New Post"
         },
         '/login': {
             imgPath: {backgroundImage: "url('img/contact-bg.jpg')"},

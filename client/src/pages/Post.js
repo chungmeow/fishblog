@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
+import PostForm from '../components/PostForm';
 import getHeader from '../components/getHeader';
 
 class Post extends React.Component {
@@ -7,15 +8,7 @@ class Post extends React.Component {
         return (
             <>
                 <Header header={getHeader(this.props.match.path)}/>
-                <article>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-8 col-md-10 mx-auto">
-                                boop
-                            </div>
-                        </div>
-                    </div>
-                </article>
+                <PostForm/>
             </>
         );
     }
