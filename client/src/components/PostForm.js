@@ -11,10 +11,9 @@ export default function PostForm() {
             title: data.title,
             image: data.image[0].name
         };
-        await api.insertPost(payload).then(res => {
-            alert(JSON.stringify(payload));
-            console.log(payload);
-        });
+        await api.insertPost(payload)
+            .then(res => { console.log(res); })
+            .catch(error => { console.log(error); });
     };
 
     return (
