@@ -9,16 +9,20 @@ const api = axios.create({
     baseURL: `http://localhost:3002`
 });
 
-export const insertPost = payload => api.post(`/api/post`, payload);
-export const updatePost = (id, payload) => api.put(`/api/post/${id}`, payload);
-export const getPostById = id => api.get(`/api/post/${id}`);
-export const deletePost = id => api.delete(`/api/post/${id}`);
+export const createPost = payload => api.post(`/api/post`, payload);
+//export const updatePost = (id, payload) => api.put(`/api/post/${id}`, payload);
+//export const getPostById = id => api.get(`/api/post/${id}`);
+//export const deletePost = id => api.delete(`/api/post/${id}`);
+//export const createUser = payload => api.post(`/api/user`, payload);
+export const getUser = payload => api.post(`/api/user/login`, payload);
 
 const apis = {
-    insertPost,
-    updatePost,
-    getPostById,
-    deletePost
+    createPost,
+    //updatePost,
+    //getPostById,
+    //deletePost,
+    //createUser,
+    getUser
 };
 
 export default apis;

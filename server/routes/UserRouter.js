@@ -4,7 +4,7 @@ const UserService = require('../services/UserService');
 const router = express.Router();
 const userService = new UserService();
 
-router.post('/users', userService.create);
-router.get('/users/:id', userService.fetch);
+//router.post('/user', userService.create);
+router.post('/user/login', userService.fetch);
 
 module.exports = router;

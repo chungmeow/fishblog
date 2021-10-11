@@ -9,7 +9,7 @@ class Login extends React.Component {
         return (
             <>
                 <Header header={getHeader(this.props.match.path)}/>
-                <LoginForm/>
+                <LoginForm history={this.props.history}/>
             </>
         );
     }

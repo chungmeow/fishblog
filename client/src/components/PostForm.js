@@ -5,15 +5,15 @@ import api from '../api';
 export default function PostForm() {
     const { register, handleSubmit } = useForm();
 
-    const onSubmit = async (data) => {
+    const onSubmit = async data => {
         const payload = {
             body: data.body,
             title: data.title,
             image: data.image[0].name
         };
-        await api.insertPost(payload)
-            .then(res => { console.log(res); })
-            .catch(error => { console.log(error); });
+        await api.createPost(payload)
+        .then(res => { console.log(res); })
+        .catch(error => { console.log(error); });
     };
 
     return (
@@ -54,7 +54,7 @@ export default function PostForm() {
                         </div>
                         <br/>
                         <div>
-                            <button type="submit" className="btn btn-primary" id="sendMessageButton">Send</button>
+                            <button type="submit" className="btn btn-primary">Send</button>
                         </div>
                     </form>
                 </div>

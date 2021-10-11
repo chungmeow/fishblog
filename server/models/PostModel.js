@@ -12,6 +12,6 @@ const PostModelSchema = new Schema({
    image: String
 });
 
-const PostModel = mongoose.model('Post',PostModelSchema);
+const PostModel = mongoose.model('Post', PostModelSchema);
 
 module.exports = PostModel;
