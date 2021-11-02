@@ -27,6 +27,11 @@ export default function getHeader(i) {
             imgPath: {backgroundImage: "url('img/contact-bg.jpg')"},
             headingType: "page-heading",
             headingTitle: "Login"
+        },
+        '/register': {
+            imgPath: {backgroundImage: "url('img/contact-bg.jpg')"},
+            headingType: "page-heading",
+            headingTitle: "Register"
         }
     };
     return header[i];

@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import api from '../api';
 
-export default function LoginForm(props) {
+export default function RegisterForm(props) {
     const { register, handleSubmit } = useForm();
 
     const onSubmit = async data => {
@@ -10,7 +10,7 @@ export default function LoginForm(props) {
             un: data.un,
             pw: data.pw
         };
-        await api.getUser(payload)
+        await api.createUser(payload)
             .then(res => { props.history.push('/'); })
             .catch(error => { console.log(error); });
     };
@@ -42,9 +42,9 @@ export default function LoginForm(props) {
                             </div>
                         </div>
                         <br/>
-                        <div>
-                            <button type="submit" className="btn btn-primary">Login</button>
-                        </div>
+                            <div className="form-group">
+                                <button type="submit" className="btn btn-primary">Register</button>
+                            </div>
                     </form>
                 </div>
             </div>
